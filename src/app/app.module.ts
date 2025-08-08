@@ -30,6 +30,7 @@ import { Graph2Component } from './graph2/graph2.component';
 import { Graph3Component } from './graph3/graph3.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { UserCommentComponent } from './user-comment/user-comment.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 const appRoutes : Routes = [{ path: 'login/:client', component: AuthComponent  },{path:'main',component: MainLayoutComponent,children:[{path:'home' , component:HomeComponent ,  canActivate:[AuthGuard] },{path: 'tracking',component: TrackingComponent , canActivate:[AuthGuard]},{path: 'calendar',component: Datatables3Component,  canActivate:[AuthGuard]},{path: 'comment',component: UserCommentComponent,  canActivate:[AuthGuard]}, { path: '**', redirectTo: 'login/default' } ] , canActivate:[AuthGuard]}];
@@ -52,7 +53,8 @@ const appRoutes : Routes = [{ path: 'login/:client', component: AuthComponent  }
     Graph2Component,
     Graph3Component,
     SpinnerComponent,
-    UserCommentComponent
+    UserCommentComponent,
+    CalendarComponent
    
   ],
   imports: [
