@@ -1,0 +1,154 @@
+
+function trim(argStringToTrim) {
+	return argStringToTrim.replace(/^\s+|\s+$/g,"");
+}
+
+function submitBooking(itemid,stageid,trns_id){
+    //var rtvalue = window.showModalDialog(    
+   //   var pop = window.open("QueryPopUp.spr?itemid="+itemid+"&stageid="+stageid+"&trns_id="+trns_id, "obj", "width=400,height=280");
+      
+      var url = "QueryPopUp.spr?itemid="+itemid+"&stageid="+stageid+"&trns_id="+trns_id;
+      
+      var sOptions = 'dialogWidth:400px; dialogHeight:281px; dialogLeft:80px; dialogTop:80px; status:no; scroll:no; help:no; resizable:yes';
+
+      var rtvalue = window.showModalDialog(url,'', sOptions);
+      
+   //   alert(' rtvalue ' +rtvalue);
+      if(rtvalue+''!='undefined'&&rtvalue!='closewindow'){
+      RefreshRecord();
+      }
+    	
+    //	window.returnValue = "SendtoClient"; // the value which is return to the parent page
+      
+      //alert("pop "+pop);
+   // pop.focus();
+    
+   // var monitor = setInterval(function() {
+   //     if (pop.closed) {
+   //     	RefreshRecord();
+   //         }
+   // }, 1000);
+          
+}
+
+function showquery(itemid,stageid,trns_id){
+
+ //alert('hi');
+ var pop = window.open("PmQueryRemark.spr?itemid="+itemid+"&stageid="+stageid+"&trns_id="+trns_id, "obj", "width=800,height=110");
+
+}
+
+
+function RefreshRecord(){
+	
+	 var clientId = $("#clientId").val();
+	 var journalId = $("#journalId").val();  
+	 var statusId =   $("#statusId").val();  
+	 var article = $("#article").val();
+	 
+	 if(article==""){
+		 article = "0";
+	 }
+	 
+	 document.forms[0].action = 
+		 "TFQueryBookingSubmit.spr?clientId="+clientId+"&journalId="+journalId+"&statusId="+statusId+"&article="+article;
+	 document.forms[0].method = "post"; 
+	 document.forms[0].submit();
+	
+}
+
+function ShowRecord(){
+	
+ var clientId = $("#clientId").val();
+ var journalId = $("#journalId").val();  
+ var statusId =   $("#statusId").val();  
+ var article = $("#article").val();
+ 
+ //alert("clientId "+clientId+" journalId "+journalId+" statusId "+statusId+" article "+article);
+/** 
+ if(clientId==0){
+	 alert('Please Select client.');
+	 return false;
+ }
+ 
+ if(journalId==0){
+	 alert('Please Select journal.');
+	 return false;
+ }
+ 
+  if(statusId==0){
+	 alert('Please Select status.');
+	 return false;
+ }
+
+ *
+ */
+
+ if(!(!(journalId==0)||!(statusId==0)||!(article==""))){
+	 
+	// alert(" clientId==0 "+(clientId==0));
+	 if(clientId==0){
+		 alert('Please Select Client');
+		 return false;
+	 }else{
+		 alert('Please Select Journal');
+		 return false;
+	 }
+	 
+	 }
+ 
+ 
+ if(article==""){
+	 article = "0";
+ }
+ 
+ document.forms[0].action = 
+	 "TFQueryBookingSubmit.spr?clientId="+clientId+"&journalId="+journalId+"&statusId="+statusId+"&article="+article;
+ document.forms[0].method = "post"; 
+ document.forms[0].submit();
+ 	
+}
+
+
+        
+        
+function removeSpecial(argFieldValue) {
+	var flag=0;
+//var alphabetReg = /^[a-z0-9.-\_(){}]+$/;
+	var iChars = "$%^*+=[]{}|<>";
+//Main String for allowing or not allowing chars
+//var iChars = "!@#$%^&*()+=-[]\\\';,./{}|\":<>?";
+	for (var i = 0; i < argFieldValue.length; i++) {
+		if (iChars.indexOf(argFieldValue.charAt(i)) != -1) {
+			flag++;
+		}
+	}
+	if(flag) {
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+function getJournaldata(clientId,journalId){
+//alert(' getJournaldata ');
+if(clientId!=0) {
+		
+		$.ajax({  
+	    	type : 'GET',
+	     url : "getJournaldata.spr", 
+	     datatype :'json',
+	     data : "clientId=" + clientId+"&journalId=" +journalId,	
+	     // async: true,
+	     success : function(data) { 
+	    	 $("#journalId").html(trim(data));	    	 
+	     },  
+	     error : function(e) {  
+	      alert('Error: ' + e);   
+	     }  
+	    });  	
+		 
+	}
+	
+}

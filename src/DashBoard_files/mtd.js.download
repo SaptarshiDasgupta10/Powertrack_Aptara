@@ -1,0 +1,307 @@
+function jsCall() {
+	var emp_code = document.getElementById("emp_code").value;	
+	var pattern= "^[a-zA-Z0-9]*$";
+        if(!emp_code.match(pattern)){
+        	alert("Please enter a valid Employee Code");
+        	document.getElementById("emp_code").value="";
+            return false;
+        }
+	if(emp_code != ""){
+		window.showModalDialog('MTD_SkillMatrixEmpAjax.jsp?emp_code='+emp_code+'&function=findRecord',"titlebar=0",						"dialogHeight:635px;dialogWidth:1250px;status=0;resizable=1;maximize:yes;minimize:yes");
+		
+		
+	}
+	else{
+		alert("Please enter Employee Code");
+		return false;
+	}
+}
+
+function jsCallhod() {
+//alert("here...");
+       document.getElementById("mtd_record").style.display='block';
+		var empcode = document.getElementById("emp_code").value;
+		if(empcode == 0){
+		alert("Please enter Employee Code");
+		return false;
+		}
+		var emp_code = $( "#emp_code option:selected" ).text();
+		var cefromDueDate = document.getElementById("ceDueDate").value;
+		    //alert("here... " + cefromDueDate);
+			var frmdate=cefromDueDate.split(" ");
+			//alert("frmdate... " + frmdate[0]);
+			var fromdate = frmdate[0];
+			//alert("fromdate... " + fromdate);
+		var cetoDueDate = document.getElementById("cetoDueDate").value;
+			//alert("here... " + cetoDueDate);
+			var todate=cetoDueDate.split(" ");
+			//alert("todate... " + todate[0]);
+			var todate = todate[0];
+			//alert("todate... " + todate);
+			
+		var pattern= "^[a-zA-Z0-9]*$";
+		//alert("to date"+ceDueDate"from date"+cetoDueDate);
+        if(!emp_code.match(pattern)){
+        	alert("Please enter a valid Employee Code");
+        	document.getElementById("emp_code").value="";
+            return false;
+        }
+		//return false;
+		if($("#ceDueDate").val()=="" || $("#ceDueDate").val()=="0")
+		{
+			alert("Please select Due Date From.");
+			$("#ceDueDate").focus();
+			return;
+		}
+		else if($("#cetoDueDate").val()=="" || $("#cetoDueDate").val()=="0")
+		{
+			alert("Please select Due Date To.");
+			$("#cetoDueDate").focus();
+			return;
+		}
+				var curdate = new Date();
+				var dd = curdate.getDate();
+				var mm = curdate.getMonth()+1; //January is 0!
+				var yyyy = curdate.getFullYear();
+				var date1 = new Date(fromdate);
+				var date2 = new Date(todate);
+				var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+				var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+				//alert("diffDays---->"+diffDays);
+				
+
+				if(dd<10) {
+				dd='0'+dd
+				} 
+
+				if(mm<10) {
+				mm='0'+mm
+				} 
+
+				curdate = mm+'/'+dd+'/'+yyyy;
+				//alert("curdate : " + curdate);
+				
+		if(fromdate>=curdate){
+		alert("From date can not be greater than current date.");
+		return false;
+		}
+		if(todate>=curdate){
+		alert("To date can not be greater than current date.");
+		return false;
+		}
+		if(fromdate>=todate){
+		alert("From date can not be greater than to date.");
+		return false;
+		}
+		if(diffDays>=8){
+		alert("Report only for 7 days can be download");
+		return false;
+		}
+		//return false;
+		if(emp_code != ""){
+		$.blockUI({ message: '<img src="images/wait_anim.gif" />' }); 
+			$.ajax({
+				type : 'GET',	
+				url : 'MTD_ProductivityReportAjax.jsp?emp_code='+emp_code+'&cefromDueDate='+cefromDueDate+'&cetoDueDate='+cetoDueDate,
+				async : 'false',
+				data : {
+					'function' : 'findRecord'
+				},
+				success : function(data) {	
+				    $.unblockUI();	
+					$("#mtd_record").html(data);
+					
+		
+					
+					//win.document.body.innerHTML = data; 
+				}
+			});
+		}
+		else{
+			alert("Please enter Employee Code");
+			return false;
+		}
+	}
+//------------------fac_repot----------------//
+function jsCallfac() {
+//alert("here...");
+        document.getElementById("mtd_record").style.display='block';
+		var faccode = document.getElementById("frmFAC").value;
+		if(faccode == 0){
+		alert("Please enter Facilitator Code");
+		return false;
+		}
+		var fac_code = $( "#frmFAC option:selected" ).text();
+		//var ceDueDate =$("#ceDueDate").val();
+		
+		var cefromDueDate = document.getElementById("ceDueDate").value;
+		    //alert("here... " + cefromDueDate);
+			var frmdate=cefromDueDate.split(" ");
+			//alert("frmdate... " + frmdate[0]);
+			var fromdate = frmdate[0];
+			//alert("fromdate... " + fromdate);
+		var cetoDueDate = document.getElementById("cetoDueDate").value;
+			//alert("here... " + cetoDueDate);
+			var todate=cetoDueDate.split(" ");
+			//alert("todate... " + todate[0]);
+			var todate = todate[0];
+			//alert("todate... " + todate);
+			
+		var pattern= "^[a-zA-Z0-9]*$";
+		//alert("to date"+ceDueDate"from date"+cetoDueDate);
+        if(!fac_code.match(pattern)){
+        	alert("Please enter a valid Facilitator Code");
+        	document.getElementById("fac_code").value="";
+            return false;
+        }
+		//return false;
+		if($("#ceDueDate").val()=="" || $("#ceDueDate").val()=="0")
+		{
+			alert("Please select Due Date From.");
+			$("#ceDueDate").focus();
+			return;
+		}
+		else if($("#cetoDueDate").val()=="" || $("#cetoDueDate").val()=="0")
+		{
+			alert("Please select Due Date To.");
+			$("#cetoDueDate").focus();
+			return;
+		}
+				var curdate = new Date();
+				var dd = curdate.getDate();
+				var mm = curdate.getMonth()+1; //January is 0!
+				var yyyy = curdate.getFullYear();
+				var date1 = new Date(fromdate);
+				var date2 = new Date(todate);
+				var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+				var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+				//alert("diffDays---->"+diffDays);
+				
+
+				if(dd<10) {
+				dd='0'+dd
+				} 
+
+				if(mm<10) {
+				mm='0'+mm
+				} 
+
+				curdate = mm+'/'+dd+'/'+yyyy;
+				//alert("curdate : " + curdate);
+				
+		if(fromdate>=curdate){
+		alert("From date can not be greater than current date.");
+		return false;
+		}
+		if(todate>=curdate){
+		alert("To date can not be greater than current date.");
+		return false;
+		}
+		if(fromdate>=todate){
+		alert("From date can not be greater than to date.");
+		return false;
+		}
+		if(diffDays>=8){
+		alert("Report only for 7 days can be download");
+		return false;
+		}
+		//return false;
+		if(fac_code != ""){
+		$.blockUI({ message: '<img src="images/wait_anim.gif" />' }); 
+			$.ajax({
+				type : 'GET',
+				url : 'MTD_FACProductivityReportAjax.jsp?emp_code='+fac_code+'&cefromDueDate='+cefromDueDate+'&cetoDueDate='+cetoDueDate,
+				async : 'false',
+				data : {
+					'function' : 'findRecord'
+				},
+				success : function(data) {	
+                    $.unblockUI();					
+					$("#mtd_record").html(data);
+					
+		
+					
+					//win.document.body.innerHTML = data; 
+				}
+			});
+		}
+		else{
+			alert("Please enter Facilitator Code");
+			return false;
+		}
+	}
+//---------------------------------------
+function clearData(){
+document.getElementById("mtd_record").style.display='none';
+}
+function downloadMTDReport(){
+
+var fromdate=$("#fDate").val();
+var todate=$("#tDate").val();
+var curdate=$("#curdate").val();
+var date1 = new Date(fromdate);
+var date2 = new Date(todate);
+var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+
+if(fromdate.length==0){
+alert("Fromdate can not be blank");
+return false;
+}
+if(todate.length==0){
+alert("Todate can not be blank");
+return false;
+}
+if(fromdate>curdate){
+	alert("From date can not be greater than current date.");
+	return false;
+}
+if(todate>curdate){
+	alert("To date can not be greater than current date.");
+	return false;
+}
+if(fromdate>todate){
+	alert("From date can not be greater than to date.");
+	return false;
+}
+if(diffDays>8){
+	alert("Report only for 7 days can be download");
+	return false;
+}
+else{
+var jspcall = 'MTDReportDownload.jsp?fromdate='+fromdate+'&todate='+todate;
+window.location.href = jspcall;
+}
+}
+function reportpopulate() {
+		var emp_code = document.getElementById("emp_code").value;	
+		var pattern= "^[a-zA-Z0-9]*$";
+        if(!emp_code.match(pattern)){
+        	alert("Please enter a valid Employee Code");
+        	document.getElementById("emp_code").value="";
+            return false;
+        }
+		if(emp_code != ""){
+		$.blockUI({ message: '<img src="images/wait_anim.gif" />' }); 
+			$.ajax({
+				type : 'GET',
+				url : 'MTD_SkillMatrixAjax.jsp?emp_code='+emp_code,
+				async : 'false',
+				data : {
+					'function' : 'findRecord'
+				},
+				success : function(data) {	
+                    $.unblockUI();				
+					$("#mtd_record").html(data);
+					
+		
+					
+					//win.document.body.innerHTML = data; 
+				}
+			});
+		}
+		else{
+			alert("Please enter Employee Code");
+			return false;
+		}
+	}

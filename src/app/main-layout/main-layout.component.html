@@ -1,0 +1,70 @@
+<app-header [logoUrl] = "logoUrl"></app-header>
+
+<div class="row">
+  
+    
+
+   
+
+    <!-- <div class="col-1  col-xs-1 col-sm-1 col-md-1 col-lg-1  sidenav-wrapper">
+
+
+        <div class="wrapper ">
+
+            <aside id="sidebar" [ngClass]=" value ? 'expand' : '' ">
+
+                <div class="d-flex">
+                    <button class="toggle-btn" type="button" (click)="toggle()">
+
+                        <mat-icon aria-hidden="false" [ngStyle]="{'color':'#04408c'}" aria-label="Example home icon"
+                            fontIcon="menu"></mat-icon>
+
+
+                    </button>
+
+                </div>
+                <ul class="sidebar-nav">
+                    <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                        <a role="button" class="sidebar-link navlink active" routerLink="/main/home">
+                            <div class="icons-wrapper">
+                                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home" [ngStyle]="{'color':'#04408c'}"></mat-icon>
+                                <span class="pd-3 linkCSS">Home</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                        <a role="button" class="sidebar-link" routerLink="/main/tracking">
+                            <div class="icons-wrapper">
+                                <mat-icon aria-hidden="false" aria-label="Example home icon"
+                                    fontIcon="donut_small"></mat-icon> <span class="pd-3 linkCSS">Tracking</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                        <a role="button" class="sidebar-link" routerLink="/main/calendar">
+                            <div class="icons-wrapper">
+                                <mat-icon aria-hidden="false" aria-label="Example home icon"
+                                    fontIcon="calendar_today"></mat-icon> <span class="pd-3 linkCSS">Calendar</span>
+                            </div>
+                        </a>
+                    </li>
+                  
+                </ul>
+            </aside>
+        </div>
+
+
+
+    </div> -->
+
+
+
+    <div class=" main d-flex ">
+        
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<app-footer></app-footer>
+
+
+<!-- Submenu -->

@@ -1,0 +1,138 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "Powertrack_4": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/powertrack-4",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css",
+              "node_modules/datatables.net-bs/css/dataTables.bootstrap.min.css",
+             
+              "node_modules/ag-grid/dist/styles/ag-theme-balham.css",
+              "node_modules/ag-grid/dist/styles/ag-theme-dark.css",
+              "node_modules/ag-grid/dist/styles/ag-theme-blue.css",
+              "node_modules/ag-grid/dist/styles/ag-theme-fresh.css",
+               "node_modules/ag-grid-community/styles/ag-theme-alpine.css"
+             
+
+              
+              
+            ],
+   
+
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/datatables.net/js/dataTables.min.js",
+             
+            
+
+              "node_modules/datatables.net-bs/js/dataTables.bootstrap.min.js",
+              "node_modules/datatables.net-fixedcolumns/js/dataTables.fixedColumns.js",
+              "src/assets/dataJs/jquery.datatables.columnFilter.js.download",
+              "src/assets/dataJs/jquery.dataTables.js.download",
+              "src/assets/dataJs/jquery-1.7.1.min.js.download"
+
+            
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "Powertrack_4:build:production"
+            },
+            "development": {
+              "buildTarget": "Powertrack_4:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "Powertrack_4:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "489368fd-9a8e-4e44-9bd4-d91f0c6df369"
+  }
+}

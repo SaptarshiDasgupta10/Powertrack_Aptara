@@ -1,0 +1,55 @@
+<div  class="row dataTables_wrapper border-top rounded-top pdt  datatable-body-cell-label">
+    <div class="">
+        <table  datatable [dtOptions] = "dtOptions" class = "table table-hover table-bordered  table-striped  datatable-body-cell-label"  cellspacing="0">
+          <tbody>
+            <tr *ngFor= "let d of data">
+             
+              <td>{{d['journal'] }}</td>
+              <td>{{d['articleNo']}}</td>
+              <td>{{d['manuscriptPg'] }}</td>
+              <td>{{d['typesheetPages']}}</td>
+              <td>{{d['PAP']}}</td>
+              <td>{{d['copyEdit']}}</td>
+              <td>{{d['prooftoAuthor']}}</td>
+              <td>{{d['revRDate']}}</td>
+              <td>{{d['revR2Date']}}</td>
+              <td>{{d['revComp']}}</td>
+              <td>{{d['revComp2']}}</td>
+              <td>{{d['DelAtypon']}}</td>
+              <td>{{d['CE_TAT']}}</td>
+              <td>{{d['COMP_TAT']}}</td>
+              <td>{{d['AUT_TAT']}}</td>
+              <td>{{d['REV_TAT']}}</td>
+              <td>{{d['REV2_TAT']}}</td>
+              <td>{{d['PUB_TAT']}}</td>
+            
+      
+              </tr>
+          </tbody>
+          <tfoot>
+                <tr >
+                    <th  ><input type="text" class="form-control " placeholder="search JOURNAL" name="journal"/></th>
+                    <th ><input type="text" class="form-control " placeholder="search Article_NO" name="articleNo"/></th>
+                    <th ><input type="text" class="form-control " placeholder="search manuscriptPg" name= "manuscriptPg"/></th>
+                    <th ><input type="text" class="form-control " placeholder="search typesheetPages" name="typesheetPages"/></th>
+                    <th ><input type="text" class="form-control " placeholder="search PAP" name="PAP"/></th>
+                    <th ><input type="text" class="form-control " placeholder="search copyEdit" name="copyEdit"/></th>
+                    <th  ><input type="text" class="form-control " placeholder="search prooftoAuthor" name="prooftoAuthor"/></th>
+                    <th ><input type="text" class="form-control " placeholder="search revRDate" name="revRDate"/></th>
+                    <th ><input type="text" class="form-control " placeholder="search revR2Date" name= "revR2Date"/></th>
+                    <th ><input type="text" class="form-control " placeholder="search revComp" name="revComp"/></th>
+                    <th ><input type="text" class="form-control " placeholder="search revComp2" name="revComp2"/></th>
+                    <th ><input type="text" class="form-control " placeholder="search DelAtypon" name="DelAtypon"/></th>
+                    <th  ><input type="text" class="form-control " placeholder="search CE_TAT" name="CE_TAT"/></th>
+                    <th ><input type="text" class="form-control " placeholder="search COMP_TAT" name="COMP_TAT"/></th>
+                    <th ><input type="text" class="form-control " placeholder="search AUT_TAT" name= "AUT_TAT"/></th>
+                    <th ><input type="text" class="form-control " placeholder="search REV_TAT" name="REV_TAT"/></th>
+                    <th ><input type="text" class="form-control " placeholder="search REV2_TAT" name="REV2_TAT"/></th>
+                    <th ><input type="text" class="form-control " placeholder="search PUB_TAT" name="PUB_TAT"/></th>
+                  
+                </tr>
+            </tfoot>
+            
+        </table>
+    </div>
+</div>

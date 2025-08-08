@@ -1,0 +1,9 @@
+<nav class=" custom-navbar" [ngClass]= "userDtls['clientId'] === '2224' ? 'navbarDC' : 'navbar'">
+    <div class="container">
+        <div class="navbar-nav ">
+            <a class="nav-link   " [ngClass]=" cFlag === 0 ? 'active': '' " routerLink="/main/home"> Home </a>
+            <a class=" nav-link" [ngClass]=" cFlag === 1 ? 'active': '' " routerLink="/main/tracking"> Tracking </a>
+            <a class=" nav-link " [ngClass]=" cFlag === 2 ? 'active': '' " routerLink="/main/Calendar"> Calendar </a>
+            <a  class="nav-link active shiftLeft" type="button" (click) = "logOut()">Logout</a>
+        </div>
+    </div>

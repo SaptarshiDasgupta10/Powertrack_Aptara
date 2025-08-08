@@ -1,0 +1,65 @@
+input.man { 
+	/* background-image: url(images/fl1.gif);  */
+            background-repeat: no-repeat;
+            background-position: center right;
+            padding-left: 0.5em;
+}
+
+
+#sddm
+{	margin: 0;
+	padding: 0;
+	z-index: 30;
+                
+}
+
+#sddm li
+{	margin: 0;
+	padding: 0;
+	list-style: none;
+	float: left;
+	font: bold 11px arial}
+
+#sddm li a
+{	display: block;
+	margin: 0 0 0 0;
+	padding: 0px -10px;
+	width: 60px;
+
+	background: none;
+	color: #FFF;
+	text-align: center;
+	text-decoration: none}
+
+#sddm li a:hover
+{	background: none}
+
+#sddm div
+{
+	position: absolute;
+	visibility: hidden;
+	margin: 0;
+	padding: 0;
+	background: #FFF;
+	border: 1px solid #000000;
+	top: 0;
+}
+
+	#sddm div a
+	{	position: relative;
+		display: block;
+		margin: 0;
+		padding: 5px 10px;
+		width: 100px;
+		white-space: nowrap;
+		text-align: left;
+		text-decoration: none;
+		background: #FFF;
+		color: black;
+		font: 11px arial}
+
+	#sddm div a:hover
+	{	background: #ffd563;
+		color: black}
+
+

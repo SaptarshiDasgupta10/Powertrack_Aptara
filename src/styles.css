@@ -1,0 +1,404 @@
+/* You can add global styles to this file, and also import other style files */
+html,body{overflow-x: hidden;}
+body{
+    margin: 0;
+    /* font-family: tahoma, arial, verdana, sans-serif;     */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #000000;
+    text-align: left;
+    background-color: #ffffff;
+    font-size: 13.333px ;
+}
+.navbar-brand {
+    float: left;
+    /* height: 50px; */
+    padding: 15px;
+    /* font-size: 18px; */
+    /* line-height: 20px;*/
+}
+html, body { height: 100%; }
+.dt-length {
+    width: 60%;
+    float: left;
+}
+.dt-search {
+    width: 40%;
+    float: left;
+    text-align: right;
+    margin-bottom: 13px;
+}
+div#DataTables_Table_0_wrapper, .pdt .dt-bootstrap  {
+    background: white;
+    padding: 10px;
+    border: 1px solid #cdcaca !important;
+    border-radius: 3px;
+}
+.dt-scroll{
+    width: 100%;
+}
+.dt-scroll-head {
+    background: #A8C8F7;
+    color: black;
+}
+span.dt-column-title input {
+    font-size: 14px;
+    font-weight: 500;
+    color: #222;
+    padding: 2px 6px;
+}
+.dt-scroll-head  .table > thead:first-child > tr:first-child > th {
+    border-top: 0px;
+    text-align: left;
+}
+table.dataTable td.dt-type-numeric { text-align: left !important;}
+
+
+div.dt-container div.dt-paging{
+    padding-top: 2px;
+    border: 1px solid #e0e0e0;
+}
+
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+    z-index: 3;
+    color: black;
+    cursor: default;
+    background-color: #A8C8F7;
+    border-color: #A8C8F7;
+    text-align: center;
+}
+div.dt-container div.dt-info {
+    white-space: nowrap;
+    padding-left: 83%;
+}
+.pagination{
+    padding-left: 81%;
+}
+
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    padding: 4px;
+    line-height: 1.35;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+
+/*******26FEB2025*********/
+.p_track td {
+    padding: 3px 3px;
+}
+.p_track {
+    margin: 0 auto;
+    width: 800px;
+    padding-top: 15px;
+}
+
+
+@media screen and (max-width: 1500px) and (min-width: 1300px) {
+    .p_track {
+    margin: 0 auto;
+    width: 800px;
+    padding-top: 12px;
+    transform: translateX(-40px);
+}
+
+    
+}
+.p_track .panel-body {
+    /* background: #f5f5f5cc; */
+    font-size: 13px;
+}
+
+.p_track input#checkComp {
+    margin-left: 4px;
+}
+.p_track .panel-body{
+    padding: 15px 15px 0px;
+}
+.p_track  .panel-primary {
+    /* border-color: #337ab7; */
+    border: 1px solid #c1c1c1 !important;
+}
+.dt-scroll-head th.dt-orderable-asc {
+    font-size: 13px;
+    font-weight: 500;
+}
+.dt-scroll td {
+    font-size: 12px;
+    /* color: #101010; */
+}
+
+span.dt-column-title input {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgb(34, 34, 34);
+    padding: 2px 11px;
+    height: 27px;
+}
+.pdt label {
+    font-weight: 500;
+    font-size: 13px;
+}
+div.dt-info {
+    white-space: nowrap;
+    font-size: 12px;
+    color: #1a1919;
+}
+.p_track table {
+    background-color: transparent;
+    width: 100%;
+}
+.p_track input, .p_track select{
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    height: 20px;
+}
+span.blc {
+    position: absolute;
+    margin-top: 3px;
+    margin-left: 8px;
+    font-weight: 200;
+}
+input[type=checkbox], input[type=radio] {
+    margin: -1px 0 0;
+}
+label.sImn {
+    font-weight: 400;
+    margin-left: 17px;
+}
+.simpletextFs {
+    margin-left: 26px;
+}
+@media screen and (max-width: 1280px) {
+    .table-bd.width_table {
+        max-width: 91%;
+    }
+    .marginL .table-bd.width_table {
+        max-width: 100%;
+    }
+}
+
+.p_track hr {
+    margin-top: 0px;
+    margin-bottom: 4px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+.p_track table tr {
+    background: #f1f1f1;
+}
+.p_track .panel-primary {
+    border: 1px solid #b7b7b7 !important;
+    border-radius: 4px;
+}
+
+
+  
+
+/* @media screen and (max-width: 1024px) and (min-width: 1280px) {
+
+   
+} */
+
+
+.bg_img h1 {
+    margin-bottom: 0px;
+}
+.bg_img h1 {
+    margin-bottom: 0px;
+    color: #fff;
+    font-size: 18px;
+    padding: 0px 17px;
+}
+/*CSS for Auth Page */
+.login_area {
+    /* margin: 0 auto;
+    width: 100%; */
+    margin-top: 100px;
+    
+    padding: 40px;
+    background: -webkit-linear-gradient(left, #04408c, #e2e2e2);
+
+
+}
+.panel-header-text {
+    color: #04408c;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+.card-auth{
+    
+    padding: 35px 30px 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 11px 14px #000000;
+}
+.FormSection {
+    width: 355px;
+    padding: 42px 38px 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 11px 14px #000000;
+    /* margin: 0 auto; */
+}
+.FormSection .input-group {
+    margin: 8px 0px 4px;
+    width: 100%;
+}
+.nao_wrapper {
+    background: -webkit-linear-gradient(left, #04408c, #e2e2e2);
+    width: 100%;
+    float: left;
+}
+.img-logo {
+    text-align: center;
+}
+.img-logo img {
+    margin-bottom: 20px;
+    width: 60%;
+}
+.cardHeader{
+    background-color: #CBDDF3;
+    padding: 4px 5px;
+}
+
+.bg-panel{
+    background:#A8C8F7;
+}
+.card-auth-body{
+    webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+.img-adjust{
+    width: 100%;
+   /* margin: 10px auto !important; */
+   margin-left: 20px;
+   margin-top: 10px;
+    align-items: center;
+}
+.card-auth {
+    padding: 35px 30px 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 11px 14px #000000;
+    height: 600px;
+}
+.bg-panel {
+    background: #A8C8F7;
+    height: 500px;
+}
+/*Datatables CSS*/
+/* body{
+    font:normal 10px Verdana,Arial,Helvetica,sans-serif;
+    } */
+    .myReadOnly{
+          background-color:#B6B6B4;
+    }
+    .dataTables_length {
+      float: left;
+      width: 17%;
+    }
+    
+    .dataTables_info {
+      width: 22%;
+      float: left;
+    } 
+    tfoot input {
+      width: 100%;
+      padding: 3px;
+      box-sizing: border-box;
+    }
+    .ui-widget-header {
+        border: 1px solid #3984d1;
+        /* background: #3f95ed url(images/ui-bg_gloss-wave_45_817865_500x100.png) 50% 50% repeat-x; */
+        color: #ffffff;
+        font-weight: bold;
+    }
+    .ui-state-default {    
+        border: 1px solid #3f95ed;
+        /* background: #dcedff url(images/ui-bg_gloss-wave_60_fece2f_500x100.png) 50% 50% repeat-x; */
+        font-weight: bold;
+        color: #4c3000;
+    }
+    table.display td {
+        padding: 2px 16px;
+        border: 1px solid #92c8ff !important;
+    }
+    table.display thead th div.DataTables_sort_wrapper {
+        padding: 0px 5px !important;
+    }
+    table.display thead th {
+        padding: 3px 0px 3px 3px;
+    }
+    .ui-widget-header .ui-state-default {
+      border: 1px solid #3f95ed;
+      /* background: #dcedff url(images/ui-bg_gloss-wave_60_fece2f_500x100.png) 50% 50% repeat-x; */
+      font-weight: bold;
+      color: #4c3000;
+  }
+  tfoot {
+        display: table-header-group;
+    }
+    table.display tfoot th {
+      padding: 3px 3px 3px 3px;
+    }
+    /* Ag-Grid added by Saptarshi Dasgupta */
+    .ag-root-wrapper {
+        border: var(--ag-wrapper-border);
+        /* border-radius: var(--ag-wrapper-border-radius); */
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        position: relative;
+    }
+    .ag-header.ag-focus-managed.ag-pivot-off.ag-header-allow-overflow {
+        background-color: #a3c7f7;
+        border-bottom: var(--ag-header-row-border);
+        color: #0a0a0ae5;
+        display: flex;
+    
+        font-family: var(--ag-header-font-family);
+        font-size: var(--ag-header-font-size);
+        font-weight: var(--ag-header-font-weight);
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+    }
+    .ag-theme-balham .ag-cell {
+        font-size: 10px !important;  /* Adjust the font size as needed */
+      }
+      .ag-theme-balham .ag-header-cell {
+        font-size: 10px !important;  /* Adjust the font size as needed */
+      }
+      .ag-row, .ag-spanned-row {
+        color: var(--ag-cell-text-color);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 11px;
+
+        white-space: nowrap;
+        --ag-internal-content-line-height: calc(min(var(--ag-row-height), var(--ag-line-height, 1000px)) - var(--ag-internal-row-border-width, 1px) - 2px);
+    }
+    .ag-cell-label-container {
+        align-items: center;
+        display: flex;
+        flex-direction: row-reverse;
+        height: 100%;
+        justify-content: space-between;
+        width: 100%;
+        font-size: 11px;
+    }
+    .ag-center-cols-container.ag-row{
+        height: 10px !important;
+    }
+    /* .ag-row-odd{
+        height: 28px !important;
+        
+    }
+    .ag-row-even {
+        height: 28px !important;
+    } */

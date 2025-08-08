@@ -1,0 +1,341 @@
+
+function openProfile(){
+
+			var OSname;
+			var BrowserName;
+			var BrowserVersion;
+			if (navigator.appVersion.indexOf("Mac") > 0) OSname = "Mac";
+			if (navigator.appName.substring(0,9) == "Microsoft")   BrowserName = "Microsoft";
+			if (parseInt(navigator.appVersion) >= 4) BrowserVersion="4x";
+			if (OSname == "Mac" && BrowserName == "Microsoft" && BrowserVersion =="4x") {
+                window.open("myprofile1.jsp",null,"height=380,left=390,width=402,top=150,status=yes,toolbar=no,menubar=no,location=no");
+			}else {
+                window.open("myprofile.jsp",null,"height=380,left=390,width=402,top=150,status=yes,toolbar=no,menubar=no,location=no","height=768,width=1024");
+            }
+   }
+
+  function openBugTracker(){
+       window.open ("http://helpdesk.aptaracorp.com");
+  }
+
+  function openMeToday(){
+       if (document.getElementById('subcontent')) document.getElementById('subcontent').style.visibility='hidden';
+       window.open("metoday.jsp?m=0",null,"height=285,left=410,width=290,top=150,status=no,toolbar=no,menubar=no,titlebar=no,location=no","height=768,width=1024");
+  }
+  var time_AMPM;
+  if (window.addEventListener)
+  window.addEventListener("load", getSetCountryFlagFromCookies, false)
+  else if (window.attachEvent)
+  window.attachEvent("onload", getSetCountryFlagFromCookies)
+  else if (document.getElementById)
+
+  window.onload=getSetCountryFlagFromCookies
+
+
+  window.onunload = getTimeZoneArray;
+
+	var contrTimeZoneArray=new Array();
+
+	function getTimeZoneArray(){
+		var ajaxRequest;
+		try{
+            // Opera 8.0+, Firefox, Safari
+            ajaxRequest = new XMLHttpRequest();
+         }catch (e)
+		  {
+            // Internet Explorer Browsers
+			try{
+                ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+                }
+				catch (e)
+                {
+                  try{
+                      ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                  }
+                   catch (e)
+					{
+					 // Something went wrong
+					 alert("Your browser broke!");
+					 return false;
+					}
+                }
+		}
+
+		// Create a function that will receive data sent from the server
+		 var tinZone=document.getElementById("timezonhidd").value;
+	 var params = params+"&tinZone="+tinZone;
+	     ajaxRequest.onreadystatechange = function(){
+			if(ajaxRequest.readyState == 4){
+                        var responseString=ajaxRequest.responseText;
+                        responseString=responseString.replace(/(\r\n|\r|\n)/g,"");
+
+
+                 }
+
+		}
+
+		 var queryString = "TimeZoneArray.jsp";
+        //alert("queryString----"+queryString);
+        ajaxRequest.open("POST",queryString, false);
+		//Send the proper header information along with the request
+		ajaxRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		ajaxRequest.setRequestHeader("Content-length", params.length);
+		ajaxRequest.setRequestHeader("Connection", "close");
+		ajaxRequest.send(params);
+
+	}
+
+
+	function nameDefined(ckie,nme)
+	{
+	   var splitValues
+	   var i
+	   for (i=0;i<ckie.length;++i)
+	   {
+		  splitValues=ckie[i].split("=")
+		  if (splitValues[0]==nme) return true
+	   }
+	   return false
+	}
+function delBlanks(strng)
+{
+   var result=""
+   var i
+   var chrn
+   for (i=0;i<strng.length;++i) {
+      chrn=strng.charAt(i)
+      if (chrn!=" ") result += chrn
+   }
+   return result
+}
+function getCookieValue(ckie,nme)
+{
+   var splitValues
+   var i
+   for(i=0;i<ckie.length;++i) {
+      splitValues=ckie[i].split("=")
+      if(splitValues[0]==nme) return splitValues[1]
+   }
+   return ""
+}
+
+function setCountryInCookies(countryName,timeOfCountry,flagName,timeZoneId){
+
+	  var futdate = new Date();		//Get the current time and date
+      var expdate = futdate.getTime();  //Get the milliseconds since Jan 1, 1970
+      expdate += 365*24*60*60;  //expires in 1 year(milliseconds)
+      futdate.setTime(expdate);
+      //var newCookie="countryName="+countryName+"#"+flagName+"#"+diffTimeZone+"; path=/;";	//Set the new cookie values up
+	  var newCookie="countryName="+countryName+"#"+flagName+"#"+timeZoneId+"; path=/;";	//Set the new cookie values up
+      newCookie += "expires=" + futdate.toGMTString();
+      window.document.cookie=newCookie;
+   }
+
+function getTimeForCountry(countryName,timeZoneId){
+	 //alert("getTimeForCountry--->"+timeZoneId)
+	 var timeOfCountry='';
+		 if(contrTimeZoneArray!=null && contrTimeZoneArray.length>1){
+			 for(var i=0;contrTimeZoneArray.length>i;i++){
+					 if(timeZoneId==contrTimeZoneArray[i].split("#")[0]){
+							timeOfCountry=contrTimeZoneArray[i].split("#")[1] ;
+							time_AMPM=timeOfCountry;
+
+					 }
+				}
+		 }
+
+   return timeOfCountry;
+   }
+
+function getSetCountryFlagFromCookies(){
+   var cookiesName='countryName';
+   var cookiesValue='';
+   var countryName='';
+   var countryFlag='';
+   var timeZoneId='';
+   var timeOfCountry='';
+   var timeOfCountryin24Hour='';//added by devendra for pick time in 24 hour time zone to take am or pm
+   var countryTimeZoneDiff='';
+   var cookie=document.cookie           //with the name and value
+   var chkdCookie=delBlanks(cookie)  //are on the client computer
+   var nvpair=chkdCookie.split(";")
+   if(nameDefined(nvpair,cookiesName))       //See if the name is in any pair
+   {
+      cookiesValue=getCookieValue(nvpair,cookiesName)  //Gets the value of the cookie
+
+      if (cookiesValue!=''){
+	     countryName=cookiesValue.split("#")[0];
+		 countryFlag=cookiesValue.split("#")[1];
+		 timeZoneId=cookiesValue.split("#")[2];
+		 timeOfCountry=getTimeForCountry(countryName,timeZoneId)
+		 setFlagTime(countryName,timeOfCountry,countryFlag,timeZoneId);
+	  }else{
+	    timeOfCountry=getTimeForCountry('India','1')
+		setFlagTime('India',timeOfCountry,'f_India.gif','1');
+	  }
+   }else{
+   timeOfCountry=getTimeForCountry('India','1')
+   setFlagTime('India',timeOfCountry,'f_India.gif','1');
+   }
+}
+
+<!--
+var timeout         = 500;
+var closetimer		= 0;
+var ddmenuitem      = 0;
+
+// open hidden layer
+function mopen(id)
+{
+
+	// cancel close timer
+	mcancelclosetime();
+	if(contrTimeZoneArray!=null && contrTimeZoneArray.length>1){
+		// close old layer
+		if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+
+		// get new layer and show it
+		ddmenuitem = document.getElementById(id);
+		ddmenuitem.style.visibility = 'visible';
+	}
+
+}
+// close showed layer
+function mclose()
+{
+	if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+}
+
+// go close timer
+function mclosetime()
+{
+	closetimer = window.setTimeout(mclose, timeout);
+}
+
+// cancel close timer
+function mcancelclosetime()
+{
+	if(closetimer)
+	{
+		window.clearTimeout(closetimer);
+		closetimer = null;
+	}
+}
+
+// close layer when click-out
+//document.onclick = mclose;
+// -->
+
+
+var timerRunning = false;
+var timeZoneCountry = '';
+var G_imgVal=''
+function setFlagTime(countryName,timeOfCountry,flagImg,timeZoneId){
+//change by devendra for display image only if timezone has changed
+document.getElementById("flagImageId").src="flag/"+flagImg+"";
+document.getElementById("flagImageId").setAttribute("src","images/"+flagImg+"");
+//End of devendra code
+if(timerRunning){
+				clearTimeout(updatetime);
+				timerRunning = false;
+			}
+timeZoneCountry = countryName;
+G_imgVal=flagImg;
+if(timeOfCountry==''){
+		timeOfCountry=getTimeForCountry(countryName,timeZoneId);
+	}
+setCountryInCookies(countryName,timeOfCountry,flagImg,timeZoneId);
+updateTime(timeOfCountry,timeZoneId);
+}
+
+function updateTime (timeOfCountry,timeZoneId){
+	//alert("1----"+contrTimeZoneArray.length);
+	//alert("1----"+timeOfCountry);
+	//alert("1----"+timeZoneId);
+
+if(contrTimeZoneArray!=null && contrTimeZoneArray.length>1){
+var updatedTime=getUpdatedTime(timeOfCountry,timeZoneId);
+updateAlsoAllContryTime(timeOfCountry,timeZoneId);
+
+var hour = updatedTime.split(":")[0];
+if(hour >= 24)
+ hour=hour-24;
+//alert(hour);
+var minute =updatedTime.split(":")[1];
+//alert(minute);
+var second =updatedTime.split(":")[2].split(" ")[0];
+var AmPm =updatedTime.split(":")[2].split(" ")[1];
+	if((hour*60 + parseInt(minute))<720){
+	AmPm = "AM";
+	}
+	else{
+	AmPm = "PM";
+
+	}
+
+	if(hour >12)
+	hour = hour - 12;
+	if(hour==00)
+	hour=12;
+
+var displayTime=hour;
+displayTime += ((minute < 10) ? ":0" : ":") + eval(minute);
+displayTime += ((second < 10) ? ":0" : ":") + eval(second);
+displayTime +=" "+AmPm+" ";
+
+if(timeZoneCountry.indexOf("_")>0) timeZoneCountry=timeZoneCountry.split("_")[0]+" "+timeZoneCountry.split("_")[1];
+document.getElementById("worldclockZone").innerHTML=timeZoneCountry
+document.getElementById("worldclockTime").innerHTML=displayTime
+updatetime=setTimeout("updateTime(\""+updatedTime+"\",\""+timeZoneId+"\")", 1000);
+timerRunning = true;
+}else{
+
+document.getElementById("worldclockZone").innerHTML="Server Not Available";
+document.getElementById("worldclockTime").innerHTML=" ";
+document.getElementById("flagImageId").style.display="none";
+//document.getElementById("flagImageId").src="images/pm_caution.gif";
+mcancelclosetime();
+//alert("else--"+document.getElementById("flagImageId").src);
+
+}
+}
+
+function getUpdatedTime (timeOfCountry,timeZoneId){
+var hour = timeOfCountry.split(":")[0];
+var minute =timeOfCountry.split(":")[1];
+var second =timeOfCountry.split(":")[2].split(" ")[0];
+var AmPm =timeOfCountry.split(":")[2].split(" ")[1];
+second++;
+if (second > 59) {
+	second -= 60, minute++;
+}
+if (minute > 59){
+	minute -= 60;
+	hour++;
+}
+var dateTime = hour;
+dateTime += ((minute < 10) ? ":0" : ":") + eval(minute);
+dateTime += ((second < 10) ? ":0" : ":") + eval(second);
+dateTime +=" "+AmPm+" ";
+
+return dateTime;
+}
+
+function updateAlsoAllContryTime (timeOfCountry,timeZoneId){
+
+if(contrTimeZoneArray!=null && contrTimeZoneArray.length>1){
+			 for(var i=0;contrTimeZoneArray.length>i;i++){
+					 if(contrTimeZoneArray[i].split("#")[0]!=''){
+							var timeZoneId=contrTimeZoneArray[i].split("#")[0];
+							var timeOfCountry=contrTimeZoneArray[i].split("#")[1];
+							contrTimeZoneArray[i]=timeZoneId+"#"+getUpdatedTime(timeOfCountry);
+
+
+					 }
+				}
+				document.getElementById("timezonhidd").value=contrTimeZoneArray;
+
+		 }
+
+}
+

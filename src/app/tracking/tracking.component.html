@@ -1,0 +1,161 @@
+<!-- <div class="navCSS">
+<ul class="nav btn   static-top shadow  nav-tabs  ">
+    <li  class="nav-item" role="presentation"> 
+       <a class="sidebar-link navlink active" routerLink="/main/home">Home</a>
+     </li>
+    <li class="nav-link active nav-item" role="presentation">
+     <a class="sidebar-link navlink active" routerLink="/main/tracking">Tracking</a> 
+    </li>
+    <li class="nav-item" role="presentation">
+     <a class="sidebar-link navlink active" routerLink="/main/calendar">Calendar</a> 
+    </li>
+</ul>
+</div> -->
+<app-nav-tabs [cFlag] = "cFlag"></app-nav-tabs>
+
+<div class="container-fluid">
+    
+    <div class="p_track" >
+        <div class="Cal_12">
+            <form #journalForm="ngForm"    (ngSubmit) ="generateTable(journalForm)" >
+                <div class="bg_img" style="background: url('assets/images/header_plain.jpg'); background-repeat: no-repeat;" >
+                    <h1>Journal Reports </h1>
+                </div>
+                <div class="  panel panel-primary ">
+                  
+                  <div class="panel-body">
+                    
+
+                    <div class="form-group">
+                    <table>
+                        <tr>
+                            <td>
+                                <label class="radio-inline">
+                                    <input  type="radio" checked  name="Articles" value="All Articles"  [(ngModel)] = "selectedArticle">
+                                    All Articles
+                                </label>
+                            </td>
+                           <td>
+                            
+                                <label class="radio-inline">
+                                    <input  type="radio"  name="Articles" value="Specific Articles" [(ngModel)] = "selectedArticle">
+                                    Specific Article
+                                </label>
+                            </td>
+                            <td>
+                                <input type="text"  name ="Article name" [value]= "selectedArticle === 'Specific Articles' ? clientreference:''" [disabled]="selectedArticle !== 'Specific Articles'" [(ngModel)] ="clientreference" >
+                             </td>
+                            <td>
+                                <label class="radio-inline"> 
+                                    <input  type="radio"  name="Articles" value="Specific Journal" [(ngModel)] = "selectedArticle" (change) = "onRadioChange()" >
+                                    Specific Journal
+                                </label>
+                            </td>
+                            <td colspan="2">
+                                <select [disabled]="selectedArticle !== 'Specific Journal'"  (click) = "onSelectJournalId($event)" >
+                                    <option>Select Journal</option>
+                                    <!-- <option>CBE</option>
+                                    <option>MBC</option> -->
+                                    <option *ngFor= "let d of journalDropDownList  "  >{{d['abbreviation']}}</option>
+                                </select>
+                            </td>
+                        </tr>    
+                        <hr/>
+                       <tr>    
+                        <td>
+                            <label class="radio-inline">
+                                <input  type="radio"  name="Articles" value="Issue" [(ngModel)] = "selectedArticle" (change) = "onRadioChange()">
+                               Issue
+                            </label>
+                        </td>
+                        <td>
+                            <select     [disabled]="selectedArticle !== 'Issue'" (change) = "onSelectJournalId($event)"  (click) = "onSelectJournalIssue($event)" >
+                                <option>Select Journal</option>
+                                <!-- <option>CBE</option>
+                                <option>MBC</option> -->
+                                 <option *ngFor= "let d of journalDropDownList ">{{d['abbreviation']}}</option>
+                            </select>
+                            <!-- <select     [disabled]="selectedArticle !== 'Issue'" (change) = "onSelectJournal($event)" *ngIf = "userDtls['clientId'] === '2224'">
+                                <option>Select Journal</option>
+                                <option>CBE</option>
+                                <option>MBC</option>
+                            </select> -->
+                        </td>
+                        <td>
+                            <select [disabled]="selectedArticle !== 'Issue'" (change) = "selectIssue($event)"  >
+                                <option>Select Issue</option>
+                                <option *ngFor="let d of issueDropdownList " >  {{ d.journal + '-' + d.volume + '-' + d.issue }}</option>
+                            </select>
+                        </td>
+                        <td>
+                           
+                            <label class="simpletext" for="billed">
+                                <input type="checkbox"  name="cbox" value="billed" id="checkbilledValue" [(ngModel)]="checkboxesVal.billed" /><span class="blc">Billed</span>
+                            </label>
+                        </td>
+                        <td>
+                            
+                            <label class="simpletext" for="unassigned">
+                                <input type="checkbox"  name="cbox" value="unassigned" id="unassigned" [(ngModel)]="checkboxesVal.unassigned"/><span class="blc">Unassigned Article</span>
+                            </label>
+                        </td>
+                    
+
+                        <td>
+                            <!-- <div class="simpletextFs">
+
+                                <label class="radio-inline">
+                                    <input  type="radio"  name="FS" value="FS" ngModel>FS
+                                </label>
+                                <label class="radio-inline">
+                                    <input  type="radio"  name="FS" value="Comp" ngModel>Comp
+                                </label>
+                            </div> -->
+                      </td>
+                    </tr>
+                    <hr/>
+                    <tr>
+                       <td>
+                            <label class="simpletext" for="backlog"> 
+                                <input type="checkbox"  name="cbox" value="backlog" id="Backlog" [(ngModel)]="checkboxesVal.backlog"/><span class="blc">backlog</span>
+                            </label>
+                        </td>
+                         <td>
+                            <label class="radio-inline transform6">
+                                <input  type="radio"  name="Articles" value="Due from date" [(ngModel)] = "selectedArticle">
+                                Due from date
+                            </label>
+                        </td>
+                       <td>
+                            <input type="date"  name="sdate" value="sdate" id="sdate" ngModel [disabled]="selectedArticle !== 'Due from date'"/>
+                        </td>
+                        <td> <label class="sImn" for="date">To Date </label>
+                        </td>
+                        <td>
+                                <input type="date"  name="edate" value="edate" id="edate" ngModel [disabled]="selectedArticle !== 'Due from date'"/>
+                            
+                        </td>
+                        <td colspan="2">
+                            <button class="btn btn-primary transformX " type="submit" [disabled]=" clientreference === '' && selectedArticle === 'Specific Articles' "  >Go</button>
+                        </td>
+                    </tr>
+                        
+                    </table>
+                    </div>
+                  </div>
+                
+                </div>
+              </form>
+        </div>
+    </div>
+    
+    <div class="alert alert-danger"  *ngIf= "errorMssg" style="align-content: center;">{{errorMssg}}</div>
+    <div class="alert alert-danger"  *ngIf = " !isFetching && trackingData.length === 0 && count === 1 " style="align-content: center;">{{"No Data Found"}}</div>
+    <app-spinner *ngIf = "isFetching" class="pdL50per"></app-spinner>
+        <div class="widthAdjust" >
+            <app-datatables3 [journalData] ="trackingData" *ngIf = "!isFetching" ></app-datatables3>
+          
+
+        </div>
+</div>
+

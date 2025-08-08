@@ -1,0 +1,310 @@
+var ServerURL ="http://localhost/PowerManage";
+function refereshparent()
+{
+	window.opener.location.reload();
+	window.close();
+}
+function onunloadrefershparent(){
+	window.opener.location.reload();
+
+}
+function refres(){
+   //alert('here');
+   window.location.reload();
+}
+function doref(){
+  //alert('in doref');
+   setTimeout('refres()', 22000)
+}
+function downloadfile(jspfile,manuscript_id,downloaded)
+{
+    doref();
+	url='/alcjms/jsp/'+jspfile+'?manuscript_id='+manuscript_id+'&downloadstage='+downloaded;
+	window.location=url;
+
+	//alert('in this function');
+	//window.open(url);
+	//window.location.reload();
+}
+
+
+function closewindow()
+{
+	window.close();
+}
+
+function validatefilename()
+{
+	if (document.forms[0].upload_filename.value == null || document.forms[0].upload_filename.value == ""){
+		alert('Please specify file to be uploaded');
+	}else{
+		document.forms[0].submit();
+		document.images[1].src="/alcjms/images/upload_show.gif";
+		document.images[2].src="/alcjms/images/upload_message.gif";
+	}
+}
+
+
+function validfilename1()
+{
+	if (document.forms[0].upload_filename.value == null || document.forms[0].upload_filename.value == ""){
+		alert('Please specify file to be uploaded');
+	}else{
+		validfilelist=document.forms[0].validfiles.value;
+		//alert(validfilelist);
+		arrayOfvalidfile = validfilelist.split(',');
+		filename_with_path=document.forms[0].upload_filename.value;
+		arrayOffilepath = filename_with_path.split('\\');
+		filename=arrayOffilepath[arrayOffilepath.length-1];
+		//filename=filename.toLowerCase();
+		b_validfile=false;
+
+		// Some times the hidden filenames gets null, thats why I commented the part. We need to check this later. After proper check, remove the below comments
+
+		///////////for (var i=0; i < arrayOfvalidfile.length; i++) {
+			///////////if(arrayOfvalidfile[i] == filename){
+				document.forms[0].submit();
+				document.images[1].src="/alcjms/images/upload_show.gif";
+				document.images[2].src="/alcjms/images/upload_message.gif";
+				b_validfile=true;
+			///////////}
+		///////////}
+
+		if (! b_validfile){
+			alert('Error: Invalid file');
+		}
+	}
+}
+
+function underconst(){
+	alert("Feature not available in this version");
+}
+
+function Showfilelist(manuscript_id,logid,jspfile)
+{
+	feature="left=0,top=0,width=800,height=355,scrollbars=yes,status=no";
+	url='/alcjms/jsp/'+jspfile+'?manuscript_id='+manuscript_id+'&loginID='+logid;
+
+	newwin= window.open(url,'uploadwindow',feature);
+	if(newwin){
+		newwin.focus();
+		newwin.location.replace(url);
+	}
+}
+function ShowfilelistRestartProc(manuscript_id,logid,jspfile)
+{
+	feature="left=0,top=0,width=800,height=355,scrollbars=yes,status=no";
+	url='/alcjms/jsp/'+jspfile+'?manuscript_id='+manuscript_id+'&loginID='+logid;
+	newwin= window.open(url,'uploadwindow',feature);
+	if(newwin){
+		newwin.focus();
+		newwin.location.replace(url);
+	}
+}
+function Showmetadata(manuscript_id,logid)
+{
+	feature="left=0,top=0,width=600,height=530,scrollbars=yes,status=no";
+	url='/alcjms/jsp/PM_view_metadata.jsp?manuscript_id='+manuscript_id+'&loginID='+logid;
+	newwin= window.open(url,'uploadwindow',feature);
+	if(newwin){
+		newwin.focus();
+		newwin.location.replace(url);
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+/////////////////FUNCTION : validateform ////////////////////////////////////
+///// FUNCTION SUMMARY : function to validate value of different field
+///// INPUT : none
+///// OUTPUT : return boolean
+/////////////////////////////////////////////////////////////////////////////
+function validateform()
+{
+	var val = document.addForm.Addnewmanuscript_folder.value;
+	var title = document.addForm.Addnewtitle.value;
+	var noOfPages = document.addForm.Addnewmsp.value;
+	var noOfFigs = document.addForm.Addnewfigs.value;
+
+	/* check for manuscript id */
+	if( ( val == null ) || ( val == "" ) )
+	{
+		alert( 'Please specify the manuscript id' );
+		document.addForm.Addnewmanuscript_folder.focus();
+		return false;
+	}
+	else
+	{
+
+		if ( val.indexOf( ' ' ) != -1 )
+		{
+			alert( 'Manuscript ID can not have space' );
+			return false;
+		}
+	}
+
+	/* check for title */
+	if( ( title == null ) || ( title == "" ) )
+	{
+		alert( 'Please enter title' );
+		document.addForm.Addnewtitle.focus();
+		return false;
+	}
+
+	/* check for no of pages */
+	if( ( noOfPages == null ) || ( noOfPages == "" ) )
+	{
+		alert( 'Please enter number of pages' );
+		document.addForm.Addnewmsp.focus();
+		return false;
+	}
+	else
+	{
+		var i;
+		for ( i=0; i < noOfPages.length; i++ )
+		{
+			if( ! ( ( noOfPages.charAt(i) >= '0' ) && ( noOfPages.charAt(i) <= '9' ) ) )
+			{
+				alert( 'Number of pages should contain only numeric value' );
+				document.addForm.Addnewmsp.focus();
+				return false;
+			}
+		}
+
+	}
+
+	/* check for no of figs */
+	if( ( noOfFigs == null ) || ( noOfFigs == "" ) )
+	{
+		alert( 'Please enter number of figures' );
+		document.addForm.Addnewfigs.focus();
+		return false;
+	}
+	else
+	{
+		for ( i=0; i < noOfFigs.length; i++ )
+		{
+			if( ! ( ( noOfFigs.charAt(i) >= '0' ) && ( noOfFigs.charAt(i) <= '9' ) ) )
+			{
+				alert( 'Number of figures should contain only numeric value' );
+				document.addForm.Addnewfigs.focus();
+				return false;
+			}
+		}
+
+	}
+	return true;
+}
+
+
+
+function Showmanuscript_det(manuscript_id,logid)
+{
+	feature="left=0,top=0,width=800,height=400,scrollbars=yes,status=no";
+	url='/alcjms/jsp/PM_view_manuscript_det.jsp?manuscript_id='+manuscript_id+'&loginID='+logid;
+	newwin= window.open(url,'manu_details',feature);
+	if(newwin){
+		newwin.focus();
+		newwin.location.replace(url);
+	}
+}
+//////////////////////////////////////////////////////////////////////
+
+//////////////////  FUNCTION: submitsearchform  //////////////////////
+//
+// INPUT: NONE
+// OUTPUT: NONE
+// FUNCTION SUMMARY: validate and submit the search form in Publisher Module
+//
+//////////////////////////////////////////////////////////////////////
+function submitsearchform(){
+	if (document.search.manuscript_info.value == null || document.search.manuscript_info.value == ""){
+		alert('Please enter Manuscript ID');
+	}else{
+		document.search.submit();
+	}
+}
+//////////////////////////////////////////////////////////////////////
+//
+//////////////////  FUNCTION: validatesearch //////////////////////
+//
+// INPUT: NONE
+// OUTPUT: NONE
+// FUNCTION SUMMARY: validate and submit the further search form in Publisher Module
+//
+//////////////////////////////////////////////////////////////////////
+function validatesearch(){
+	if (document.searchF.searchon_info.value == null || document.searchF.searchon_info.value == ""){
+		if (!confirm('Nothing to search on.\n Would you like to see All the Manuscripts?')){
+			return false;
+		}
+	}
+}
+
+// added by Virginia  for switch user
+
+
+
+//var baseurl="http://localhost/PowerManage";
+
+
+
+//////////////////  FUNCTION: switchuser //////////////////////
+
+//
+
+// INPUT: usertype
+
+// OUTPUT: NONE
+
+// FUNCTION SUMMARY: selected user role dashboard page should load
+
+//
+
+//////////////////////////////////////////////////////////////////////
+
+/*
+
+function  switchuser(switchto,baseurl,switchuser){
+
+
+	var typeid=switchto.options[switchto.options.selectedIndex].value;
+
+    if (typeid==0){
+		alert("Please select the user you would like to switch to");
+	} else{
+
+        var url=baseurl+"/Validate?typeid="+typeid+"&switchuser="+switchuser;
+		    alert("url--"+url)
+			top.window.location =url;
+
+  }
+
+}*/
+
+function  switchusers(switchto,baseurl){
+
+            //alert("new");
+
+    var typeid=switchto.options[switchto.options.selectedIndex].value;
+
+    if (typeid==0){
+
+        alert("Please select the user you would like to switch to");
+
+    } else{
+
+        var url=baseurl+"/switchTouserRole.jsp?typeid="+typeid;
+
+       // alert("url="+url);
+
+        top.window.location =url;
+
+        //window.location.reload();
+
+        //top.window.location =url;
+
+  }
+
+}
+

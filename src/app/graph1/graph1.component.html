@@ -1,0 +1,27 @@
+
+<div id="chart" style="padding: 20px;"
+class="col-sm-5 col-md-5 col-lg-5 col-md-offset-1 ">
+
+<div class="card shadow">
+  <div class="card-title panel">
+    <div class="panel-heading cardHeader">
+      <p class="panel-title cardHeaderText">Received at Aptara to delivered at Atypon (TAT)</p>
+    </div>
+
+  </div>
+  <div class="card-body" >
+    
+    <app-spinner *ngIf= "isFetching" class="pdL50per"></app-spinner>
+
+    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+      [stroke]="chartOptions.stroke" [colors]="chartOptions.colors" [dataLabels]="chartOptions.dataLabels"
+      [legend]="chartOptions.legend" [markers]="chartOptions.markers" [grid]="chartOptions.grid"
+      [yaxis]="chartOptions.yaxis" [title]="chartOptions.title" [plotOptions]="chartOptions.plotOptions" *ngIf="!isFetching && graphData.length>0">
+    </apx-chart>
+  </div>
+
+</div>
+
+
+
+</div>

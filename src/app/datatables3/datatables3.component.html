@@ -1,0 +1,55 @@
+<div class="content" *ngIf="journalData.length">
+    <!-- The AG Grid component, with Dimensions, CSS Theme, Row Data, and Column Definition -->
+    <ag-grid-angular
+    class="ag-theme-balham"
+      style="width: 91.5%;"
+      rowSelection="multiple"
+      [rowData]="journalData"
+      [columnDefs]="colDefs"
+      [pagination]="pagination"
+      [paginationPageSize]="paginationPageSize"
+      [defaultColDef]="defaultColDef"
+      [gridOptions] = "gridOptions"
+      (gridReady)="onGridReady($event)"
+      [ngClass]="journalData.length === 1 ?'tableAdjH':'tableH'"
+    />
+  </div>
+
+<div class="mt-30" tabindex="-1" role="dialog" [ngClass]="flagModal ? 'modal show' : 'modal hide'" >
+    <div class="modal-dialog" role="document" >
+      <div class="modal-content "  style="background-image: url(../../assets/images/client_logo/back.jpg); background-repeat: no-repeat;">
+        <div class="modal-header"  style="background-image: url(../../assets/images/client_logo/back.jpg); background-repeat: no-repeat;">
+          <!-- <img class="img-logo" src="../../assets/images/client_logo/logo_ascb.gif"> -->
+          
+          <button type="button" class="close" aria-label="Close" (click)="onCloseHandledModal()"><span
+              aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body" >
+<!--        
+         <div> <h4 class="center"  [ngClass]= " errorModal && modalSize? 'alert alert-danger errorWidth widthMod' :''">{{errorModal}}</h4></div>
+         <div> <h4 class="center"  [ngClass]= " !isfetchingpopup && modalData.length>=1 && modalData[0] === 'FAIL' && modalSize ? 'alert alert-danger errorWidth widthMod' :''">{{modalMssg}}</h4></div>
+         -->
+<div class="row">
+  <div class="col-md-12">
+	<label>
+    <p>Add a comment below  </p>
+  </label>
+	<textarea rows="5" cols="50" placeholder="Type Here" name="comment" id="clientComment"  class="form-control " [(ngModel)]="textInput"  ></textarea>
+
+ </div>
+ <div class="col-md-2 col-md-offset-10 mt-10">
+  <button class="btn btn-success" (click) = "handleSubmit()">submit</button>
+ 
+ </div>
+</div>
+       
+        
+
+  
+        </div>
+        <div class="modal-footer "  style="background-image: url(../../assets/images/client_logo/back.jpg); background-repeat: no-repeat;" >
+          <button type="button"  class=" btn btn-info" (click)="onCloseHandledModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

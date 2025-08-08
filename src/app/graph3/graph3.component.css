@@ -1,0 +1,60 @@
+.cardHeader{
+    background-color: #CBDDF3;
+    padding: 4px 5px;
+}
+.cardHeaderText {
+    color: #04408c;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Arial Helvetica sans-serif";
+}
+.shadow {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+.sectionBorder{
+    border: 1px solid black;
+    border-radius: 0.50rem;
+}
+.card{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color:white !important;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    
+
+}
+.container-bg{
+    /* background-color: #DFE9F6 !important; */
+    /* background-color: #CBDDF3; */
+    background-color:#a8c8f7;
+}
+.textBorder{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    text-align: left;
+    /* border: 1px solid; */
+    margin-left: -15px;
+
+    /* border: 1px solid ;
+    border-radius:0.75rem;
+    background-color:#DFE9F6 ; */
+    /* background-color:rgba(238, 159, 107, 0.356); */
+    background-clip: border-box;
+
+}
+.pdL50per{
+    padding-left: 50%;
+}

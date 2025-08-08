@@ -1,0 +1,48 @@
+{
+   "elsevier": {
+    
+    "logo": "assets/images/client_logo/logo_ELVR.gif",
+    "cid": 2172,
+    "client":"elsevier"
+  },
+  "ascb":{
+    
+    
+    "logo": "assets/images/client_logo/logo_ascb.gif",
+    
+
+    "cid": 1067,
+    "client":"ascb"
+  },
+  "aacr":{
+    
+    "logo": "assets/images/client_logo/logo_AACR.gif",
+    "cid": 1012,
+    "client":"aacr"
+  },
+  "aps":{
+    
+    "logo": "assets/images/client_logo/logo_APS.gif",
+    "cid": 2204,
+    "client":"aps"
+  },
+  "acp":{
+    
+    "logo": "assets/images/client_logo/logo_ACP.gif",
+    "cid": 1758,
+    "client":"acp"
+  },
+  "cmu":{
+    
+    "logo": "assets/images/client_logo/logo_Carnegie_Mellon_University.gif",
+    "cid": 2206,
+    "client":"cmu"
+  },
+  "dc":{
+    
+    "logo": "assets/images/client_logo/DC_logo.png",
+    "cid": 2224,
+    "client":"dc"
+  }
+}
+  

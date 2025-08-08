@@ -1,0 +1,74 @@
+.navCSS{
+    box-shadow: 0px 2px 7px 5px #ccc;
+    position: relative;
+    width: 100%;
+    margin-top: -12px;
+    opacity: 0.9px;
+   
+}
+.navbar-brand {
+    float: left;
+    /* height: 50px; */
+    padding: 15px;
+    font-size: 15px;
+    /* line-height: 20px;*/
+}
+.pd10{
+    padding: 10px;
+}
+.pdL50per{
+    padding-left: 50%;
+}
+.mt10{
+    margin-top: 10px;
+}
+.mt20{
+    margin-top: 20px;
+}
+.mb10{
+    margin-bottom: 20px;
+}
+.cell-display{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    
+}
+.simpletext {
+    font-family:  Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    text-align: left;
+    line-height: 1;
+}
+.simpletextFs[_ngcontent-ng-c1934857656] {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    text-align: left;
+    line-height: 1;
+    transform: translateY(-4px);
+    margin-left: 18px;
+}
+
+
+button.btn.transformX {
+    padding: 2px 10px;
+    margin-left: 23px;
+    
+}
+@media (max-width: 1299px) and (min-width: 992px){
+    .widthAdjust{
+        width: 1360px;
+    }
+}
+@media (max-width: 1500px) and (min-width: 1300px){
+    .widthAdjust{
+        width: 1430px;
+    }
+}
+@media  (min-width: 1501px){
+    .widthAdjust{
+        width: 1630px;
+    }
+}
+
+/* style='background: ; border="0" cellspacing="0" cellpadding="0" width="100%" align"center";height:"31" */

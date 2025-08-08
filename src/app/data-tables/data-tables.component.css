@@ -1,0 +1,35 @@
+.datatable-body-cell-label {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  
+  .pdt{
+    padding-top: 8px;
+    padding-bottom: 25px;
+  }
+  .pd10{
+    padding: 10px;;
+  }
+  
+  .dt-length {
+    width: 40%;
+    float: left;
+  }
+  
+  .dt-search {
+    width: 60%;
+    float: left;
+    text-align: right;
+  }
+  .mt-10{
+    margin-top: 10px ;
+  }
+  
+  table.dataTable {
+    width: 100% !important; /* Ensures the table takes the full width of the container */
+  }
+  
+  table.dataTable td, table.dataTable th {
+    white-space: nowrap; /* Prevents text from wrapping to new lines */
+  }

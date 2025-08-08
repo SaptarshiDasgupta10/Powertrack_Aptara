@@ -1,0 +1,74 @@
+<app-header *ngIf = "clientConfig.length>=1" [logoUrl] = "logoUrl"></app-header>
+
+    <div class=" container">
+        <div class="row">
+            <div class="login_area col-md-12">
+                <div class="col-md-8">
+                    <div class="card-auth">
+                        <div class="panel bg-panel">
+                            <div class="panel-heading ">
+                                <p class="panel-title panel-header-text">Enhanced Project Monitoring</p>
+
+
+                            </div>
+                            <div class="card-auth-body">
+                                <p>
+                                   <b> PowerTrackTM is an online tracking
+                                    system created specifically for Aptara's
+                                    customers to more efficiently monitor
+                                    their project status. This web-based
+                                    application provides an in-depth view of
+                                    the production milestones for every
+                                    project.Status reports can be viewed
+                                    online or saved as Microsoft
+                                    Excel files for offline use.</b><br><br>
+                                         <b><p style="text-align: center;"> Key Benefits</p> </b><br>
+                                         <b>• Web Interface:</b> allows for secure and instant access from anywhere in the world. Searches can be saved for future reference
+                                         <br><br>
+                                         <b>• Workflow-Based Flexible Tracking:</b> status tracking via milestones , tracking options can be customized for specific customer requirements and include tracking by article, issue, figure, and chapter
+                                         <br><br>
+                                        <b>• Color-Coded Status:</b> color-coding allows users to quickly assess project status and identify any potential delivery issues
+                                         <br><br>
+                                         <b>• Advanced Search:</b> data can be filtered in any sorting sequence, based on field names with predefined conditions
+        
+                                   
+                                    </p>
+                            </div>
+                           
+
+                        </div>
+                     
+                        
+                    </div>
+                </div>
+                <div class="col-md-4  ">
+                    <div class="FormSection">
+                        <div class="img-logo">
+                           <img  src="assets/images/aptaracorp.png">
+                             <!-- <img src="images/nao-logo.png"> -->
+                        </div>
+                        <form id="loginForm" #authForm = "ngForm"  (ngSubmit) ="onSubmit(authForm)">
+                            <div class="input-group">
+                                <label for="fname">User name:</label>
+                                <input type="text" class="form-control" id="username" name="username"  ngModel required />
+                            </div>
+                            <div class="input-group">
+                                <label for="fname">Password:</label>
+                                <input type="password" class="form-control" id="password" name="password" ngModel required />
+                            </div>
+                           
+                           <button  type="submit" class="btn btn-submit btn-primary" id="submitBtn">Submit</button>
+                           <p style="margin-top: 10px; align-items: center;" class="alert alert-danger" *ngIf = "errorMessage">{{errorMessage}}</p>
+                            
+                            
+                        </form>
+                    </div>
+                    <img  class= "img-adjust" src="assets/images/tracker2.png"/>
+                </div>
+
+            </div>
+           
+        </div>
+    </div>
+
+<app-footer></app-footer>
